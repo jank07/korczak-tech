@@ -1,7 +1,11 @@
-/* setting root and body */
+/* Global settings */
+* {
+    box-sizing: border-box;
+}
 
-:root {
+html {
     font-size: 10px;
+    overflow-x: hidden;
 }
 
 body {
@@ -13,13 +17,7 @@ body {
     color: white;
 }
 
-/* header {
-    display: flex;
-    width: 100vw;
-    justify-content: center;
-} */
-
-header h1 {
+/* header h1 {
     font-family: 'Cookie', cursive;
     font-weight: 100;
     font-size: 5rem;
@@ -27,6 +25,79 @@ header h1 {
 
 header h1 span {
     font-weight: 900;
+} */
+
+/* nav styling */
+
+/* logo */
+
+nav h1 {
+    font-family: 'Cookie', cursive;
+    font-weight: 100;
+    font-size: 5rem;
+}
+
+nav h1 span {
+    font-weight: 900;
+}
+
+nav {
+    background-color: rgb(21, 10, 72);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    padding: 2em;
+    position: relative;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    width: 55%;
+    justify-content: space-around;
+}
+
+a {
+    text-decoration: none;
+    font-size: 1.7rem;
+    position: relative;
+    padding: .2em;
+    color:rgb(76, 76, 172);
+}
+
+a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0%;
+    background-color: rgb(157, 157, 157);
+    height: .15em;
+    border-radius: 10px;
+    transition: .3s ease-in-out;
+}
+
+a:hover::after {
+    width: 100%;
+}
+/* styling the burger icon */
+
+.burger {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+
+
+.line {
+    width: 3em;
+    height: .3em;
+    background-color: rgb(76, 76, 172);
+    margin: .7em;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
 }
 
 section {
@@ -67,14 +138,48 @@ section img {
     width: 3.5rem;
 }
 
-a {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: white;
+@media only screen and (max-width: 1000px) {
+    .burger {
+        display: block;
+        transition: 3s ease-in-out;
+    }
+
+    .burger.active .line:first-child {
+        transform: translateY(-300px);
+    }
+
+    .burger.active .line:nth-child(2) {
+        transform: rotate(-405deg) translateY(8px);
+    }
+
+    .burger.active .line:nth-child(3) {
+        transform: rotate(-320deg) translateY(-8px);
+    }
+    /* display none for bug if resizing window */
+    ul {
+        position: absolute;
+        right: 0;
+        top: 8vh;
+        background-color:rgb(21, 10, 72);
+        height: 92vh;
+        flex-direction: column;
+        text-align: center;
+        transform: translate(100%);
+        transition: .3s ease-in-out;
+    }
+
+    ul.active {
+        transform: translate(0%);
+    }
+
+    a {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+    }
 }
 
-nav {
-    display: none;
-    justify-content: flex-end;
+@media only screen and (max-width: 760px) {
+    ul {
+        width: 80%;
+    }
 }
